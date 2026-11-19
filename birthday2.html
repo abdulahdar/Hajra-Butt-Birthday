@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Birthday Surprise for Hajra 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fffaf7;
+  color: #493849;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 34px 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page.active {
+  display: flex;
+  animation: fade .75s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.inner {
+  width: min(760px, 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #bd7190;
+  margin-bottom: 14px;
+}
+
+.headline {
+  font: 500 clamp(2.5rem, 8vw, 5.1rem)/1.05 'Playfair Display', serif;
+  margin: 12px 0;
+  color: #493849;
+}
+
+.headline em {
+  color: #e95791;
+}
+
+.sub {
+  max-width: 540px;
+  margin: 15px auto 25px;
+  line-height: 1.8;
+  color: #826c7c;
+}
+
+.btn {
+  padding: 14px 25px;
+  border-radius: 999px;
+  color: white;
+  background: linear-gradient(120deg, #f18ab2, #d94483);
+  box-shadow: 0 9px 22px #d9448330;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.light {
+  background: white;
+  color: #c94b83;
+  border: 1px solid #f4c5d7;
+}
+
+.tiny {
+  font-size: .8rem;
+  color: #a58b9b;
+}
+
+.sticker {
+  font-size: 6rem;
+}
+
+/* FIRST PAGE */
+
+#intro {
+  background: linear-gradient(145deg, #fffdf9, #fff0f5, #f8edf7);
+}
+
+.envelope {
+  width: 230px;
+  height: 150px;
+  margin: 25px auto;
+  position: relative;
+  background: #f3c6d4;
+  border-radius: 8px;
+  box-shadow: 0 18px 35px #b66d8b2b;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.envelope:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f9dce5;
+  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  z-index: 2;
+}
+
+.envelope:after {
+  content: '💌';
+  font-size: 3.5rem;
+  z-index: 3;
+  transform: translateY(8px);
+}
+
+/* SECOND PAGE */
+
+#night {
+  background: radial-gradient(
+    ellipse at 50% 15%,
+    #29315c,
+    #10162e 65%,
+    #090d20
+  );
+  color: white;
+}
+
+#night .headline {
+  color: white;
+}
+
+#night .sub {
+  color: #d0c7e2;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1.5px),
+    radial-gradient(#c9b6ff 1px, transparent 1.5px);
+  background-size: 79px 79px, 113px 113px;
+  opacity: .55;
+}
+
+#night .btn {
+  background: linear-gradient(120deg, #f7d77e, #e6a94e);
+  color: #45344a;
+}
+
+.bear {
+  font-size: 5.5rem;
+  margin: 12px 0;
+  animation: bob 2.8s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* BIRTHDAY PAGE */
+
+#birthday {
+  background: repeating-linear-gradient(
+    90deg,
+    #fffaf7 0 32px,
+    #fff0f5 32px 64px
+  );
+}
+
+.flag {
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin-bottom: 18px;
+}
+
+/* CAKE PAGE */
+
+#cut,
+#wish {
+  background: linear-gradient(145deg, #fffdf8, #fff0f5);
+}
+
+.cake-wrap {
+  position: relative;
+  width: 250px;
+  height: 190px;
+  margin: 25px auto;
+  cursor: pointer;
+}
+
+.cake-top {
+  position: absolute;
+  top: 35px;
+  left: 22px;
+  width: 206px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ffe5ed;
+  border: 3px solid #eaa2bd;
+  z-index: 3;
+}
+
+.cake-tier {
+  position: absolute;
+  left: 22px;
+  width: 206px;
+  height: 60px;
+  background: linear-gradient(
+    #f58ab5 0 20%,
+    white 20% 70%,
+    #ed77a8 70%
+  );
+  border-radius: 8px 8px 18px 18px;
+  top: 57px;
+  box-shadow: 0 8px 0 #d75b91;
+}
+
+.cake-tier:after {
+  content: '✿　✿　✿';
+  position: absolute;
+  inset: 22px 0;
+  text-align: center;
+  color: #d74c87;
+}
+
+.candle {
+  position: absolute;
+  top: 0;
+  left: 119px;
+  width: 12px;
+  height: 48px;
+  background: repeating-linear-gradient(
+    45deg,
+    white 0 5px,
+    #ed7ba7 5px 9px
+  );
+  z-index: 4;
+}
+
+.candle:before {
+  content: '🔥';
+  position: absolute;
+  top: -25px;
+  left: -8px;
+  font-size: 1.2rem;
+  animation: flick .4s infinite alternate;
+}
+
+@keyframes flick {
+  to {
+    transform: scale(.8) rotate(8deg);
+  }
+}
+
+.cut-piece {
+  position: absolute;
+  top: 60px;
+  left: 120px;
+  width: 100px;
+  height: 80px;
+  background: #ffdce8;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0;
+  transition: .5s;
+  z-index: 5;
+}
+
+.cake-wrap.cut .cut-piece {
+  opacity: 1;
+  transform: translate(65px, -12px) rotate(12deg);
+}
+
+.cake-wrap.cut .candle:before {
+  opacity: 0;
+}
+
+/* WISH PAGE */
+
+.wish-cake {
+  font-size: 6rem;
+  margin: 15px;
+}
+
+.sparkle {
+  font-size: 1.8rem;
+  animation: twinkle 1s infinite alternate;
+}
+
+@keyframes twinkle {
+  to {
+    opacity: .3;
+    transform: scale(.8);
+  }
+}
+
+/* MEMORIES PAGE */
+
+#memories {
+  background: linear-gradient(150deg, #fffaf7, #fdf0f5);
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.photo-card {
+  background: white;
+  padding: 9px 9px 14px;
+  box-shadow: 0 9px 25px #77546b1c;
+  transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(2) {
+  transform: rotate(2deg);
+}
+
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card label {
+  display: block;
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.upload {
+  display: inline-block;
+  margin: 8px;
+  padding: 9px 13px;
+  border: 1px dashed #e5a4bd;
+  border-radius: 20px;
+  color: #b84e7d;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.upload input {
+  display: none;
+}
+
+/* LETTER PAGE */
+
+#letter {
+  background: #f7eff8;
+}
+
+.paper {
+  background: #fffdf8;
+  border: 1px solid #efdfd2;
+  box-shadow: 0 15px 40px #76536a20;
+  padding: 35px;
+  max-width: 620px;
+  margin: 20px auto;
+  text-align: left;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.signature {
+  text-align: right;
+  color: #d44f88;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+/* FINAL PAGE */
+
+#final {
+  background: linear-gradient(145deg, #fff, #ffe8f1, #f8d8e7);
+}
+
+.confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(#e96b9e 2px, transparent 3px),
+    radial-gradient(#f3c75d 2px, transparent 3px),
+    radial-gradient(#a88bd3 2px, transparent 3px);
+  background-size: 67px 83px, 91px 101px, 113px 77px;
+  opacity: .55;
+}
+
+@media(max-width:560px) {
+  .photos {
+    gap: 8px;
+  }
+
+  .photo-card {
+    padding: 6px;
+  }
+
+  .page {
+    padding: 25px 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<!-- PAGE 1: ENVELOPE -->
+
+<section class="page active" id="intro">
+<div class="inner">
+
+<div class="eyebrow">
+A tiny surprise, made just for you
+</div>
+
+<h1 class="headline">
+There's something <em>for you</em>
+</h1>
+
+<p class="sub">
+A little bundle of memories, smiles and birthday wishes
+is waiting inside...
+</p>
+
+<div class="envelope" onclick="go('night')"></div>
+
+<button class="btn" onclick="go('night')">
+Open your surprise 💗
+</button>
+
+<p class="tiny">Made with love for Hajra Butt</p>
+
+</div>
+</section>
+
+<!-- PAGE 2: DARK SCREEN -->
+
+<section class="page" id="night">
+
+<div class="stars"></div>
+
+<div class="inner">
+
+<div class="eyebrow">Pssst...</div>
+
+<h1 class="headline">
+The room is<br>
+<em style="color:#f5d17c">waiting for you.</em>
+</h1>
+
+<p class="sub">
+Someone very special deserves a little magic tonight.
+</p>
+
+<button class="btn" onclick="go('birthday')">
+Turn on the lights ✨
+</button>
+
+<div class="bear">🧸</div>
+
+</div>
+</section>
+
+<!-- PAGE 3: BIRTHDAY -->
+
+<section class="page" id="birthday">
+
+<div class="inner">
+
+<div class="flag">🎀 ✨ 🎀 ✨ 🎀</div>
+
+<div class="eyebrow">Today is your day</div>
+
+<h1 class="headline">
+Happy Birthday,<br>
+<em>Hajra!</em> 🎂
+</h1>
+
+<p class="sub">
+To the girl who deserves all the happiness in the world.
+May your day be as lovely and special as you are.
+</p>
+
+<div class="bear">🧸</div>
+
+<button class="btn" onclick="go('cut')">
+Let's celebrate 🎉
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 4: CAKE CUTTING -->
+
+<section class="page" id="cut">
+
+<div class="inner">
+
+<div class="eyebrow">Make a little wish</div>
+
+<h1 class="headline">Make the first cut ✂️</h1>
+
+<p class="sub">
+Tap the cake to cut your very special birthday cake!
+</p>
+
+<div class="cake-wrap" id="cake" onclick="cutCake()">
+
+<div class="candle"></div>
+<div class="cake-top"></div>
+<div class="cake-tier"></div>
+<div class="cut-piece"></div>
+
+</div>
+
+<p id="cutMessage" class="tiny">
+One little tap, birthday girl 💗
+</p>
+
+<button class="btn" onclick="go('wish')">
+Continue 💕
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 5: WISH -->
+
+<section class="page" id="wish">
+
+<div class="inner">
+
+<div class="eyebrow">Close your eyes...</div>
+
+<div class="wish-cake">🎂</div>
+
+<h1 class="headline">
+Your wish is on its way
+</h1>
+
+<p class="sub">
+Take a deep breath, make a wish from your heart,
+and tap below when you're ready.
+</p>
+
+<div class="sparkle">✨ 💫 ✨</div>
+
+<button class="btn" onclick="blowWish()">
+I made my wish 💖
+</button>
+
+<p id="wishMessage" class="tiny"></p>
+
+<button class="btn light" id="wishNext"
+style="display:none"
+onclick="go('memories')">
+See our memories 📸
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 6: MEMORIES -->
+
+<section class="page" id="memories">
+
+<div class="inner">
+
+<div class="eyebrow">Little moments, big feelings</div>
+
+<h1 class="headline">
+Some moments are<br>
+<em>worth keeping forever.</em>
+</h1>
+
+<p class="sub">
+Add your favourite pictures below to turn this page
+into your own little memory book.
+</p>
+
+<div class="photos">
+
+<div class="photo-card">
+<img id="pic1"
+src="https://placehold.co/400x400/f8dce8/98647d?text=Our+Memory+1"
+alt="Memory one">
+<label>Favourite day 💗</label>
+</div>
+
+<div class="photo-card">
+<img id="pic2"
+src="https://placehold.co/400x400/f4e7f6/98647d?text=Our+Memory+2"
+alt="Memory two">
+<label>Best smiles ✨</label>
+</div>
+
+<div class="photo-card">
+<img id="pic3"
+src="https://placehold.co/400x400/fff0d9/98647d?text=Our+Memory+3"
+alt="Memory three">
+<label>More to come 🌷</label>
+</div>
+
+</div>
+
+<p class="tiny">
+Choose photos from your device.
+</p>
+
+<label class="upload">
+Add photo 1
+<input type="file" accept="image/*"
+onchange="loadPhoto(event,'pic1')">
+</label>
+
+<label class="upload">
+Add photo 2
+<input type="file" accept="image/*"
+onchange="loadPhoto(event,'pic2')">
+</label>
+
+<label class="upload">
+Add photo 3
+<input type="file" accept="image/*"
+onchange="loadPhoto(event,'pic3')">
+</label>
+
+<br>
+
+<button class="btn" onclick="go('letter')">
+Read your letter 💌
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 7: LETTER -->
+
+<section class="page" id="letter">
+
+<div class="inner">
+
+<div class="eyebrow">A note from the heart</div>
+
+<h1 class="headline">
+For you, <em>Hajra.</em>
+</h1>
+
+<div class="paper">
+Dear Hajra,
+
+Happy Birthday! 🎂💗
+
+Some people make life brighter just by being
+in it, and I hope you know how special you are.
+
+I wish you a year filled with peaceful days,
+loud laughter, beautiful surprises, good health,
+and dreams that come true.
+
+May you always find reasons to smile,
+courage for every new adventure, and people
+around you who appreciate your heart.
+
+Thank you for all the little moments
+and memories. Here's to many more.
+
+Never stop being your wonderful self.
+You deserve every bit of happiness
+coming your way.
+
+<div class="signature">
+With lots of love & best wishes 💗
+</div>
+
+</div>
+
+<button class="btn" onclick="go('final')">
+One last surprise 🎁
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 8: FINAL SURPRISE -->
+
+<section class="page" id="final">
+
+<div class="confetti"></div>
+
+<div class="inner">
+
+<div class="sticker">🎈🧸🎂</div>
+
+<div class="eyebrow">And one more time...</div>
+
+<h1 class="headline">
+Happy Birthday,<br>
+<em>Hajra Butt!</em>
+</h1>
+
+<p class="sub">
+May this new chapter be your happiest one yet.
+Keep shining, keep smiling, and remember
+how loved you are. 💗
+</p>
+
+<div class="sticker">🌷💖✨</div>
+
+<button class="btn light" onclick="go('intro')">
+Replay your surprise ↻
+</button>
+
+</div>
+</section>
+
+</main>
+
+<script>
+
+// CHANGE BETWEEN PAGES
+
+function go(id) {
+
+  document.querySelectorAll('.page')
+    .forEach(page => page.classList.remove('active'));
+
+  document.getElementById(id)
+    .classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+}
+
+// CAKE CUTTING
+
+function cutCake() {
+
+  document.getElementById('cake')
+    .classList.add('cut');
+
+  document.getElementById('cutMessage')
+    .textContent =
+    'A sweet little slice, just for you! 🍰';
+
+}
+
+// MAKE A WISH
+
+function blowWish() {
+
+  document.getElementById('wishMessage')
+    .textContent =
+    'Wish sent to the universe! May it come true, Hajra. ✨';
+
+  document.getElementById('wishNext')
+    .style.display = 'inline-block';
+
+}
+
+// UPLOAD PERSONAL PHOTOS
+
+function loadPhoto(event, id) {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+
+    document.getElementById(id).src =
+      reader.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
